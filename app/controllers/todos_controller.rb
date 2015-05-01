@@ -18,7 +18,7 @@ class TodosController < ApplicationController
   end
 
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
   end
 
   def edit
@@ -48,6 +48,6 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title)
+    params.require(:todo).permit(:title).merge(user: current_user)
   end
 end
