@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root 'pages#front'
 
+  get 'home', to: 'todos#index'
+
   resources :todos, except: [:show]
 
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
   get 'sign_out', to: 'sessions#destroy'
 
-  get 'register', to: 'users#new'
+  get 'register', to: 'users#new', as: :users
   post 'register', to: 'users#create'
 
   # The priority is based upon order of creation: first created -> highest priority.

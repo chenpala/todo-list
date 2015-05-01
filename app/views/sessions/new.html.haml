@@ -1,2 +1,8 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+%h1 登入
+= form_tag do
+  = label_tag :email, "帳號"
+  = text_field_tag :email
+  = label_tag :password, "密碼"
+  = password_field_tag :password
+  = submit_tag "登入"
+

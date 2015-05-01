@@ -1,2 +1,7 @@
-%h1 Users#new
-%p Find me in app/views/users/new.html.haml
+%h1 註冊
+= form_for @user do |f|
+  = f.label :email, "帳號"
+  = f.text_field :email
+  = f.label :password, "密碼"
+  = f.password_field :password
+  = f.submit "註冊"
