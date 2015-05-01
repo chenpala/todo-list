@@ -1,4 +1,6 @@
 class TodosControllerController < ApplicationController
+  before_action :require_sign_in
+
   def new
     @todo = Todo.new
   end
@@ -10,7 +12,7 @@ class TodosControllerController < ApplicationController
       flash[:success] = "新增成功！"
       redirect_to home_path
     else
-      flash[:danger] = "新增失敗！"
+      flash.now[:danger] = "新增失敗！"
       render :new
     end
   end
@@ -30,7 +32,7 @@ class TodosControllerController < ApplicationController
       flash[:success] = "更新成功！"
       redirect_to home_path
     else
-      flash[:danger] = "更新失敗！"
+      flash.now[:danger] = "更新失敗！"
       render :edit
     end
   end
