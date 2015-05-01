@@ -1,2 +1,8 @@
-%h1 TodosController#index
-%p Find me in app/views/todos_controller/index.html.haml
+%ul
+  - @todos.each do |todo|
+    %li
+      #{todo.title}
+      = link_to edit_todo_path(todo) do
+        %i.glyphicon.glyphicon-pencil
+      = link_to todo, method: :delete, data: {confirm: "Are you sure?"} do
+        %i.glyphicon.glyphicon-remove

@@ -28,7 +28,7 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
 
-    if @todo.save
+    if @todo.update(todo_params)
       flash[:success] = "更新成功！"
       redirect_to home_path
     else

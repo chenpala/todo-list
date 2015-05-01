@@ -1,2 +1,4 @@
-%h1 TodosController#edit
-%p Find me in app/views/todos_controller/edit.html.haml
+= form_for @todo do |f|
+  = f.label :title, "標題"
+  = f.text_field :title
+  = f.submit "更新"

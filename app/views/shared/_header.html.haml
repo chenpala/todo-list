@@ -1,3 +1,5 @@
 %h1= link_to "Todos List", root_path
 - if current_user
+  = link_to new_todo_path do
+    %i.glyphicon.glyphicon-plus Todo
   = link_to "登出", sign_out_path

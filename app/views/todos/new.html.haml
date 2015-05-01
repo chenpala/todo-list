@@ -1,2 +1,4 @@
-%h1 TodosController#new
-%p Find me in app/views/todos_controller/new.html.haml
+= form_for @todo do |f|
+  = f.label :title, "標題"
+  = f.text_field :title
+  = f.submit "建立"
