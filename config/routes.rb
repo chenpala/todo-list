@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'users/new'
-
-  get 'users/create'
+  root 'pages#front'
 
   resources :todos, except: [:show]
+
+  get 'sign_in', to: 'sessions#new'
+  post 'sign_in', to: 'sessions#create'
+  get 'sign_out', to: 'sessions#destroy'
+
+  get 'register', to: 'users#new'
+  post 'register', to: 'users#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
