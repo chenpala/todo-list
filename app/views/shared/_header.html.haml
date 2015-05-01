@@ -2,4 +2,9 @@
 - if current_user
   = link_to new_todo_path do
     %i.glyphicon.glyphicon-plus Todo
-  = link_to "登出", sign_out_path
+  = link_to new_category_path do
+    %i.glyphicon.glyphicon-plus 新分類
+  = link_to categories_path do
+    %i.glyphicon.glyphicon-list-alt 管理分類
+  = link_to sign_out_path do
+    %i.glyphicon.glyphicon-log-out 登出

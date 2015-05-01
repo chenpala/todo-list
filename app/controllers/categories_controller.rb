@@ -1,32 +1,38 @@
-class TodosController < ApplicationController
+class CategoriesController < ApplicationController
   before_action :require_sign_in
   before_action :authorized?, only: [:edit, :update, :destroy]
 
   def new
-    @todo = Todo.new
+    @category = Category.new
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @category = Category.new(category_params)
 
-    if @todo.save
+    if @category.save
       flash[:success] = "新增成功！"
       redirect_to home_path
     else
-      flash.now[:danger] = "新增失敗！"
+      flash[:danger] = "種類不能為空或重複！"
       render :new
     end
   end
 
   def index
-    @todos = current_user.todos
+    @categories = current_user.categories
   end
 
   def edit
   end
 
+  def destroy
+    @category.destroy
+
+    redirect_to home_path
+  end
+
   def update
-    if @todo.update(todo_params)
+    if @category.update(category_params)
       flash[:success] = "更新成功！"
       redirect_to home_path
     else
@@ -35,22 +41,16 @@ class TodosController < ApplicationController
     end
   end
 
-  def destroy
-    @todo.destroy
-
-    redirect_to home_path
-  end
-
   private
 
-  def todo_params
-    params.require(:todo).permit(:title).merge(user: current_user)
+  def category_params
+    params.require(:category).permit(:name).merge(user: current_user)
   end
 
   def authorized?
-    @todo = Todo.find(params[:id])
+    @category = Category.find(params[:id])
 
-    if @todo.user != current_user
+    if @category.user != current_user
       flash[:danger] = "權限不足！"
       redirect_to home_path
     end

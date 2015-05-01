@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home', to: 'todos#index'
 
   resources :todos, except: [:show]
+  resources :categories, except: [:show]
 
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
