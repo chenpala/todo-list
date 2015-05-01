@@ -44,7 +44,7 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title).merge(user: current_user)
+    params.require(:todo).permit(:title, :category_id).merge(user: current_user)
   end
 
   def authorized?

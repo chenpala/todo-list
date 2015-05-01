@@ -1,5 +1,5 @@
 %ul
-  - @todos.each do |todo|
+  - @category.todos.each do |todo|
     %li
       #{todo.title}
       = link_to "" do
@@ -8,3 +8,4 @@
         %i.glyphicon.glyphicon-pencil
       = link_to todo, method: :delete, data: {confirm: "Are you sure?"} do
         %i.glyphicon.glyphicon-remove
+

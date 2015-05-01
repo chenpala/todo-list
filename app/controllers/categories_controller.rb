@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :require_sign_in
-  before_action :authorized?, only: [:edit, :update, :destroy]
+  before_action :authorized?, only: [:show, :edit, :update, :destroy]
 
   def new
     @category = Category.new
@@ -20,6 +20,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories
+  end
+
+  def show
   end
 
   def edit

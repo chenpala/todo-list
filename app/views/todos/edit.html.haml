@@ -1,4 +1,6 @@
 = form_for @todo do |f|
   = f.label :title, "標題"
   = f.text_field :title
+  = f.label :category_id, "類別"
+  = f.select :category_id, options_for_select(categories_helper)
   = f.submit "更新"
