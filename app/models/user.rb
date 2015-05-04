@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   has_many :todos, ->{ order(created_at: :desc) }
   has_many :categories
 
-  validates_presence_of :email, :password
+  validates_presence_of :email
   validates_uniqueness_of :email, on: :create
-  #validates_presence_of :password, unless: :through_third_website
+  validates_presence_of :password, unless: :through_third_website
 
   has_secure_password validations: false
 
