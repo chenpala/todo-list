@@ -22,4 +22,14 @@ class SessionsController < ApplicationController
     flash[:success] = "登出成功！"
     redirect_to root_path
   end
+
+
+
+
+
+  def create_with_fb
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to home_path
+  end
 end

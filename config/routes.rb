@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new', as: :users
   post 'register', to: 'users#create'
 
+  get 'auth/facebook/callback', to: 'sessions#create_with_fb'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
